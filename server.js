@@ -23,8 +23,8 @@ app.prepare().then(() => {
   //quando l'utente accede al server accade questo
   io.on("connection", (socket) => {
     console.log("A user connected:", socket.id);
-    socket.on("chat message", (msg) => {
-      console.log("Message received:", msg);
+    socket.on("chat message", (msg, userName) => {
+      io.emit('chat message', msg, userName);
     })
   })
 
